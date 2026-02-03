@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Throttled click counter</title>
+</head>
+<body>
+  <button id="btn">Click</button>
+  <p id="count">0</p>
+  <script>
+    function createThrottledCounter(){
+    let count = 0;
+    let canClick = true;
+     
+    return function(){
+      if(!canClick) return;
+
+      canClick = false;
+      count++;
+      document.getElementById("count").innerText = count;
+
+      setTimeout(()=>{
+        canClick = true;
+      },1000);
+    };
+  }
+    const throttledClick = createThrottledCounter();
+    document.getElementById("btn").addEventListener("click", throttledClick);
+  </script>
+
+</body>
+</html>

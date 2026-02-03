@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>once() Function</title>
+</head>
+<body>
+
+  <button id="btn">Click Me</button>
+
+  <script>
+    function once(fn) {
+      let call = false;   
+
+      return function () {
+        if (!call) {
+          call = true;
+          fn();
+        }
+      };
+    }
+
+    function greet() {
+      console.log("Hello");
+      alert("Hello");
+    }
+
+    const greetOnce = once(greet);
+
+    document.getElementById("btn").addEventListener("click", greetOnce);
+  </script>
+
+</body>
+</html>

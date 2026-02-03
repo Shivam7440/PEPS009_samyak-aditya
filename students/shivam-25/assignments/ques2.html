@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Live Character Counter</title>
+  <style>
+    textarea {
+      width: 300px;
+      height: 100px;
+    }
+    p {
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <textarea id="text"></textarea>
+  <p id="char-count">0 / 100</p>
+
+  <script>
+    const textarea = document.getElementById("text");
+    const countPara = document.getElementById("char-count");
+    const maxLimit = 100;
+
+    textarea.addEventListener("input", () => {
+      const length = textarea.value.length;
+      countPara.textContent = length + " / " + maxLimit;
+
+      if (length > maxLimit) {
+        countPara.style.color = "red";
+      } else {
+        countPara.style.color = "black";
+      }
+    });
+  </script>
+
+</body>
+</html>
